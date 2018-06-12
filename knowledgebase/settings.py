@@ -25,7 +25,7 @@ SECRET_KEY = '(7(juw@3%&0w=p!t__&aq&c&mmc6ey%y%-@c-+kt)85_j!c6e6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['knowledge-base-nicecore.c9users.io', '127.0.0.1']
 
 
 # Application definition
@@ -55,7 +55,9 @@ ROOT_URLCONF = 'knowledgebase.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,3 +121,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
+]
+
+
+LOGIN_REDIRECT_URL = '/'
