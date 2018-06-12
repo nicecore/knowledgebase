@@ -1,0 +1,12 @@
+#main-nav {
+    box-shadow: 0 4px 7px -6px black;
+}
+
+
+.jumbotron {
+    /*background-image: url('seigaiha.png');*/
+    background-color: #E8E8E8;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
