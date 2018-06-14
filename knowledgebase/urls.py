@@ -22,5 +22,6 @@ from articles.views import HomeView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', HomeView.as_view()),
+    path('', include('articles.urls', namespace='articles')),
+    path('', HomeView.as_view(), name="home"),
 ]

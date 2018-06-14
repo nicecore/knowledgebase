@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <h2>All recent posts</h2>
+  {% for article in all_articles %}
+    <h3>{{ article.title }}</h3>
+    <p>{{ article.content }}</p>
+    <p>Category: {{ article.category }}</p>
+  {% endfor %}
+</div>
+{% endblock %}

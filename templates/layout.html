@@ -1,4 +1,5 @@
 {% load static %}
+{% load article_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link href="{% static 'css/open-iconic-bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet">
   </head>
   <body>
     <h1 class="text-center my-3">Knowledge Base</h1>
@@ -25,7 +27,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link pr-3" href="#">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link pr-3" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="#">Journal</a>
             <!-- Make the 'journal' link a drop-down menu, options "View Blog" and "Add New Post"-->
           </div>
@@ -35,11 +37,15 @@
                 Categories
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Web Development</a>
-                <a class="dropdown-item" href="#">Marxism-Leninism</a>
-                <a class="dropdown-item" href="#">Music</a>
+                {% category_list as categories %}
+                {% for category in categories %}
+                <a class="dropdown-item" href="{% url 'articles:by_cat' category.id %}">{{ category.name }}</a>
+                {% endfor %}
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">
+                  <img src="{% static 'img/svg/plus.svg' %}">
+                  Add Category
+                </a>
               </div>
             </li>
           </div>
@@ -50,6 +56,7 @@
     <!-- /Navbar -->
 
 <!-- ------------------------------------------------------------------------------------------ -->
+
 
     {% block content %}{% endblock %}
 
