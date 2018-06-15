@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.urls import reverse
 
 
 class Article(models.Model):
@@ -24,6 +25,12 @@ class Article(models.Model):
         if not self.slug:
             self.slug = self._get_unique_slug()
         super().save(*args, **kwargs)
+        
+    def get_absolute_url(self):
+        return reverse(
+            'articles:article-detail',
+            kwargs={'slug': self.slug}
+        )
 
 
 

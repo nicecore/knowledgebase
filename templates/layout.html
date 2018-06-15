@@ -28,7 +28,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link pr-3" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Journal</a>
+            <a class="nav-item nav-link" href="{% url 'articles:all-articles' %}">Journal</a>
+            <a class="nav-item nav-link" href="{% url 'articles:new-article' %}">New Article</a>
             <!-- Make the 'journal' link a drop-down menu, options "View Blog" and "Add New Post"-->
           </div>
           <div class="navbar-nav ml-auto">

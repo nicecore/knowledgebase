@@ -2,12 +2,14 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-  <h2>All articles for category "{{ category }}"</h2>
+<div class="container pt-5">
+  <h1>All articles for category "{{ category }}"</h1>
+  <hr>
   {% for article in articles %}
     <h3>{{ article.title }}</h3>
     <p>{{ article.content }}</p>
-    <p>Category: {{ article.category }}</p>
+    <h5>Category: <a href="{% url 'articles:by_cat' category=article.category.id %}">{{ article.category }}</a></h5>
+    <hr>
   {% endfor %}
 </div>
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView, CreateView, ListView
 from django.views.generic.detail import DetailView
 from django.shortcuts import render
+from django.urls import reverse
 
 from .models import Article, Category
 
@@ -29,3 +30,17 @@ def article_by_category(request, category):
         "articles-by-category.html",
         {'articles': articles, 'category': category}
     )
+
+
+class NewArticleView(CreateView):
+    model = Article
+    fields = ['title', 'content', 'category']
+    template_name = 'new_article.html'
+    
+class ArticleDetailView(DetailView):
+    model = Article
+    queryset = Article.objects.all()
+    
+    
+def article_search(request, term):
+    

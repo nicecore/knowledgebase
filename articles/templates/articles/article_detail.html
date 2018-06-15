@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="container w-50 mt-5">
+    
+    <h2 class="mb-3">{{ article.title }}</h2>
+    
+    <p>{{ article.content }}</p>
+    
+    <hr>
+    
+    <p><a href="{% url 'articles:by_cat' category=article.category.name %}">{{ article.category }}</a></p>
+
+</div>
+{% endblock %}
